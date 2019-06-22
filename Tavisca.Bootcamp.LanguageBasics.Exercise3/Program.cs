@@ -42,7 +42,7 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
         public static List<int> getMealsByMinNutrients(List<int> mealIndices, int[] nutrient)
         {
             //Find min nutrient among the indices in mealIndices
-            int minNutrient = nutrient.Where((value, index) => mealIndices.BinarySearch(index) >= 0).Min();
+            int minNutrient = mealIndices.Select(index => nutrient[index]).Min();
             //Find the indices of min nutrient in nutrient array
             return mealIndices.Where(index => nutrient[index] == minNutrient).ToList();
         }
@@ -50,7 +50,7 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
         public static List<int> getMealsByMaxNutrients(List<int> mealIndices, int[] nutrient)
         {
             //Find max nutrient among the indices in mealIndices
-            int maxNutrient = nutrient.Where((value, index) => mealIndices.BinarySearch(index) >= 0).Max();
+            int maxNutrient = mealIndices.Select(index => nutrient[index]).Max();
             //Find the indices of max nutrient in nutrient array
             return mealIndices.Where(index => nutrient[index] == maxNutrient).ToList();
         }
